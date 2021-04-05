@@ -25,5 +25,7 @@ class User(db.Model):
     email = db.Column(db.String(64), unique=True, index=True)
     password = db.Column(db.String(128))
 
+
+
 if __name__ == "__main__":
     app.run(debug=True)
