@@ -20,3 +20,4 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 ## Defining db
 db = SQLAlchemy(app)
 Migrate(app,db)
+
