@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
 
 ### MySQL DATABASE SECTION ###
-
+import config
 from config import username, password
 
 basedir = os.path.abspath(os.path.dirname(__file__))
