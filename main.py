@@ -129,6 +129,8 @@ def add_pup():
 
     form = AddPup()
     
+    owner_list = session.execute('SELECT owner_id, CONCAT(UCASE(LEFT(owner_name,1)), LCASE(SUBSTRING(owner_name, 2))) AS owner_name FROM python_exercise_2.owner')
+    print(owner_list)
     if form.validate_on_submit():
 
         owner_id = form.owner_id.data
@@ -145,7 +147,7 @@ def add_pup():
 
         return redirect(url_for('index'))
 
-    return render_template('add_puppy.html', form = form)
+    return render_template('add_puppy.html', form = form, owner_list = owner_list)
 
 
 

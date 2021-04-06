@@ -13,7 +13,14 @@
             <div class="col-10 mx-auto">
                 <form method="POST">
                     {{form.hidden_tag()}}<br>
-                    {{form.owner_id.label}} {{form.owner_id()}}<br>
+                    {{form.owner_id.label}} 
+                    <SELECT name="owner_id">
+                    {% for id in owner_list %}
+                        <OPTION value={{ id.owner_id }}>{{id.owner_name}}</OPTION>
+                    {% endfor %}
+                    </SELECT>
+                    <!-- {{form.owner_id()}} -->
+                    <br>
                     {{form.puppy_name.label}} {{form.puppy_name()}}<br>
                     {{form.age.label}} {{form.age()}}<br>
                     {{form.gender.label}} {{form.gender()}}<br>
