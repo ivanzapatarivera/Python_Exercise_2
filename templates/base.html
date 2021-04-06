@@ -10,14 +10,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/styler.css') }}">
-<title>Jersey For Puppies DAMS (Data Management System)</title>
+<title>Jersey For Puppies PAWS (Puppy Analytics Warehousing System)</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="{{url_for('index')}}">Home</a>  
-            <a class="nav-item nav-link" href="{{url_for('add_owner')}}">Add Owner</a>  
-            <a class="nav-item nav-link" href="{{url_for('add_pup')}}">Add Pup</a>  
+            <a class="nav-item nav-link" href="{{url_for('add_owner')}}">Register Owner</a>  
+            <a class="nav-item nav-link" href="{{url_for('add_pup')}}">Register Pup</a>  
         </div>
     </nav>
     {% block content %}
