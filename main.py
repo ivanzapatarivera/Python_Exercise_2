@@ -146,6 +146,7 @@ def add_pup():
         db.session.add(added_puppy)
         db.session.commit()
 
+        owner_list
         return redirect(url_for('index'))
 
     return render_template('add_puppy.html', form = form, owner_list = owner_list, gender_list = gender_list)

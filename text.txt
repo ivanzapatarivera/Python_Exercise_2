@@ -1,0 +1,20 @@
+
+
+{{form.hidden_tag()}}                  
+                    
+                    {{form.owner_name.label}} 
+                    {{form.owner_name()}}             
+                    
+                    {{form.address.label}} 
+                    {{form.address()}}             
+                    
+                    {{form.city.label}} 
+                    {{form.city()}}             
+                    
+                    {{form.state.label}} 
+                    {{form.state()}}             
+                    
+                    {{form.zipcode.label}} 
+                    {{form.zipcode()}}             
+                    
+                    {{form.submit()}}<br>

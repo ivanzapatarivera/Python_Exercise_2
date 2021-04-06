@@ -2,26 +2,75 @@
 
 {% block content %}
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-8 mx-auto">
-                <h1>Please, enter new owner's name in<br>DAMS System</h1>
-                <h3>Register a new owner to our database!</h3>
+<div class="container mt-5">
+    <div class="row mb-5">
+        <div class="col-12 col-md-8 mx-auto">
+            <div class="text-center">
+                <img src="{{url_for('static', filename='pup.jpg')}}" style="max-width: 250px; height: auto; border-radius: 25px; box-shadow: 0 0 10px rgb(200,200,200);">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-10 mx-auto">
-                <form method="POST">
-                    {{form.hidden_tag()}}<br>                    
-                    {{form.owner_name.label}} {{form.owner_name()}}<br>               
-                    {{form.address.label}} {{form.address()}}<br>               
-                    {{form.city.label}} {{form.city()}}<br>               
-                    {{form.state.label}} {{form.state()}}<br>               
-                    {{form.zipcode.label}} {{form.zipcode()}}<br>               
-                    {{form.submit()}}<br>
-                </form>
-            </div>
+            <h1 class="my-2 text-center">Jersey PAWS System</h1>
+            <h4 class="text-center">Register Owner</h4>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 col-md-8 mx-auto">
+            <form method="POST">
+                <div class="row">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
+                        {{form.hidden_tag()}}
+                    </div>
+                    <div class="col-8">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
+                        {{form.owner_name.label}} 
+                    </div>
+                    <div class="col-8">
+                        {{form.owner_name(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
+                        {{form.address.label}}
+                    </div>
+                    <div class="col-8">
+                        {{form.address(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
+                        {{form.city.label}}
+                    </div>
+                    <div class="col-8">
+                        {{form.city(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
+                        {{form.state.label}}
+                    </div>
+                    <div class="col-8">
+                        {{form.state(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
+                        {{form.zipcode.label}}
+                    </div>
+                    <div class="col-8">
+                        {{form.zipcode(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                        {{form.submit(class="mt-4 col-3 btn btn-primary")}}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
