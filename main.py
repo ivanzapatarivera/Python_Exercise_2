@@ -65,6 +65,9 @@ class Puppy(db.Model):
         self.owner = owner
         self.favorite_food = favorite_food
 
+    def __repr__(self):
+        return f'Puppy\'s name is {self.name}. \n And has been adopted by {self.owner}. \n S/he loves {self.favorite_food} and likes to be called by {self.nickname}! \n \n Here are some facts! \n ID: {self.puppy_id} \n Furr Color: {self.color} \n Height (in): {self.height_in_inches}'
+
 
 # Query to select all data from table puppies
 sql = 'SELECT * FROM puppies'
