@@ -69,13 +69,9 @@ class Puppy(db.Model):
         return f'Puppy\'s name is {self.name}. \n And has been adopted by {self.owner}. \n S/he loves {self.favorite_food} and likes to be called by {self.nickname}! \n \n Here are some facts! \n ID: {self.puppy_id} \n Furr Color: {self.color} \n Height (in): {self.height_in_inches}'
 
 
-# Query to select all data from table puppies
+# Query to select all data from table puppies and force an error to create tables if needed
 sql = 'SELECT * FROM puppies'
-
-# Creating MySQL engine
 engine = create_engine(db_uri)
-
-# Opening a session to throw try/except error
 session = db.session()
 
 # Validating if sql string will throw a try/except error
@@ -91,3 +87,11 @@ except:
     print(f'*** TABLE CREATED ***')
 
 
+
+@app.route('/')
+def index():
+    return render_template('home.html')
+
+
+if __name__ == "__main__":
+    app.run(debug = True)
