@@ -4,27 +4,30 @@
 
 <div class="container mt-5">
     <div class="row mb-5">
-        <div class="col-12 mx-auto">
-            <h1>Please, enter the puppy's name in<br>DAMS System</h1>
-            <h4>Register a new puppy to our database!</h4>
+        <div class="col-12 col-md-8 mx-auto">
+            <div class="text-center">
+                <img src="{{url_for('static', filename='pup.jpg')}}" style="max-width: 250px; height: auto; border-radius: 25px; box-shadow: 0 0 10px rgb(200,200,200);">
+            </div>
+            <h1 class="my-2 text-center">Jersey PAMS System</h1>
+            <h4 class="text-center">Register puppy to PAMS</h4>
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-12 mx-auto">
+        <div class="col-12 col-md-8 mx-auto">
             <form method="POST">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
                         {{form.hidden_tag()}}
                     </div>
                     <div class="col-8">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
                         {{form.owner_id.label}}
                     </div>
                     <div class="col-8">
-                        <SELECT name="owner_id" class="col-12">
+                        <SELECT name="owner_id" class="col-12 input">
                             {% for id in owner_list %}
                             <OPTION value={{ id.owner_id }}>{{id.owner_name}}</OPTION>
                             {% endfor %}
@@ -32,7 +35,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
                         {{form.puppy_name.label}}
                     </div>
                     <div class="col-8">
@@ -40,7 +43,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
                         {{form.age.label}}
                     </div>
                     <div class="col-8">
@@ -48,11 +51,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
                         {{form.gender.label}}
                     </div>
                     <div class="col-8">
-                        <SELECT name="gender" class="col-12">
+                        <SELECT name="gender" class="col-12 input">
                             {% for gender in gender_list %}
                             <OPTION value="{{ gender }}">{{gender}}</OPTION>
                             {% endfor %}
@@ -60,7 +63,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
                         {{form.height_inches.label}}
                     </div>
                     <div class="col-8">
@@ -68,7 +71,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
                         {{form.color.label}}
                     </div>
                     <div class="col-8">
@@ -76,7 +79,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
                         {{form.favorite_food.label}}
                     </div>
                     <div class="col-8">
