@@ -129,7 +129,10 @@ def add_pup():
 
     form = AddPup()
     
-    owner_list = session.execute('SELECT owner_id, CONCAT(UCASE(LEFT(owner_name,1)), LCASE(SUBSTRING(owner_name, 2))) AS owner_name FROM python_exercise_2.owner')
+    owner_query = session.query(Owner.owner_id, Owner.owner_name)
+    # owner_list = session.execute('SELECT owner_id, CONCAT(UCASE(LEFT(owner_name,1)), LCASE(SUBSTRING(owner_name, 2))) AS owner_name FROM python_exercise_2.owner')
+    
+    # our_user = session.query(User).filter_by(name='ed').first() 
     gender_list = ['Female', 'Male', 'Non-binary', 'Unknown']
 
     if form.validate_on_submit():
@@ -146,10 +149,9 @@ def add_pup():
         db.session.add(added_puppy)
         db.session.commit()
 
-        owner_list
         return redirect(url_for('index'))
-
-    return render_template('add_puppy.html', form = form, owner_list = owner_list, gender_list = gender_list)
+ 
+    return render_template('add_puppy.html', form = form, owner_list = owner_query, gender_list = gender_list)
 
 
 
