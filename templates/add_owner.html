@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h1>Please, enter new owner's name in<br>DAMS System</h1>
+                <h3>Register a new owner to our database!</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <form method="POST">
+                    {{form.hidden_tag()}}<br>                    
+                    {{form.owner_name.label}} {{form.owner_name()}}<br>               
+                    {{form.address.label}} {{form.address()}}<br>               
+                    {{form.city.label}} {{form.city()}}<br>               
+                    {{form.state.label}} {{form.state()}}<br>               
+                    {{form.zipcode.label}} {{form.zipcode()}}<br>               
+                    {{form.submit()}}<br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

@@ -3,14 +3,6 @@ from wtforms import *
 
 class AddPup(FlaskForm):
 
-    # owner_id = form.owner_id.data
-    #     puppy_name = form.puppy_name.data
-    #     age = form.age.data
-    #     gender = form.gender.data
-    #     height_inches = form.height_inches.data
-    #     color = form.color.data
-    #     favorite_food = form.favorite_food.data
-
     owner_id = IntegerField("Owner's ID: ")
     puppy_name = StringField("Name: ")
     age = IntegerField("Age: ")
@@ -20,4 +12,13 @@ class AddPup(FlaskForm):
     favorite_food = StringField("Favorite Food: ")
     submit = SubmitField('Add')
 
+
+class AddOwner(FlaskForm):
+
+    owner_name = StringField("Name: ")
+    address = StringField("Address: ")
+    city = StringField("City: ")
+    state = StringField("State: ")
+    zipcode = IntegerField("Zip Code: ")
+    submit = SubmitField('Add')
 
