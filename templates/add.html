@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block navbar %}
+
+        <button>
+            <a class="nav-item nav-link" href="{{url_for('del_pup')}}">Sign Out</a>
+        </button>
+ 
+{% endblock %} 
+{% block content %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h1>Please, enter the puppy's name in<br>DAMS System</h1>
+                <h3>Register a new puppy to our database!</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <form method="POST">
+                    {{form.hidden_tag()}}<br>
+                    {{form.owner_id.label}} {{form.owner_id()}}<br>
+                    {{form.puppy_name.label}} {{form.puppy_name()}}<br>
+                    {{form.age.label}} {{form.age()}}<br>
+                    {{form.gender.label}} {{form.gender()}}<br>
+                    {{form.height_inches.label}} {{form.height_inches()}}<br>
+                    {{form.color.label}} {{form.color()}}<br>
+                    {{form.favorite_food.label}} {{form.favorite_food()}}<br>
+                    {{form.submit()}}<br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
