@@ -21,11 +21,48 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 Migrate(app,db)
 
-class User(db.Model):
-    __tablename__ = 'user'
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(64), unique=True, index=True)
-    password = db.Column(db.String(128))
+class Owner(db.Model):
+
+    __tablename__ = 'owner'
+
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.Text)
+    address = db.Column(db.Text)
+    city = db.Column(db.Text)
+    state = db.Column(db.Text)
+    zipcode = db.Column(db.Numeric(5,0))
+
+    def __init__(self, name, address, city, state, zipcode):
+        self.name = name
+        self.address = address
+        self.city = city
+        self.state = state
+        self.zipcode = zipcode
+
+
+class Puppy(db.Model):
+    
+    __tablename__ = 'puppies'
+    
+    id = db.Column(db.Integer, primary_key = True)
+    owner_id = db.Column(db.Integer, db.ForeignKey(Owner.id))
+    name = db.Column(db.Text)
+    nickname = db.Column(db.Text)
+    height_in_inches = db.Column(db.Numeric(2,1))
+    color = db.Column(db.Text)
+    favorite_food = db.Column(db.Text)
+
+    def __init__(self, name, nickname, height_in_inches, color, owner, favorite_food):
+        self.name = name
+        self.nickname = nickname
+        self.height_in_inches = height_in_inches
+        self.color = color
+        self.owner = owner
+        self.favorite_food = favorite_food
+
+
+db.create_all()
 
 if __name__ == "__main__":
     app.run(debug=True)
+
