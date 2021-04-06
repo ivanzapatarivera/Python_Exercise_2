@@ -80,10 +80,11 @@ session = db.session()
 try: 
     cursor = session.execute(sql).cursor
     if(cursor):
-        print('connected')
-    else: 
-        print('table does not exist')
+        print('CONNECTED')
 except:
+    print(f'Table does not exist and string {sql} was not executed.')
+    print(f'*** CREATING TABLE ***')
     db.create_all()
+    print(f'*** TABLE CREATED ***')
 
 
