@@ -3,36 +3,91 @@
 {% block content %}
 
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-8 mx-auto">
+    <div class="row mb-5">
+        <div class="col-12 mx-auto">
             <h1>Please, enter the puppy's name in<br>DAMS System</h1>
-            <h3>Register a new puppy to our database!</h3>
+            <h4>Register a new puppy to our database!</h4>
         </div>
     </div>
     <div class="row">
-        <div class="col-10 mx-auto">
+        <div class="col-12 col-md-12 mx-auto">
             <form method="POST">
-                {{form.hidden_tag()}}<br>
-                {{form.owner_id.label}}
-                <SELECT name="owner_id">
-                    {% for id in owner_list %}
-                    <OPTION value={{ id.owner_id }}>{{id.owner_name}}</OPTION>
-                    {% endfor %}
-                </SELECT>
-                <br>
-                {{form.puppy_name.label}} {{form.puppy_name()}}<br>
-                {{form.age.label}} {{form.age()}}<br>
-                {{form.gender.label}} 
-                <SELECT name="gender">
-                    {% for gender in gender_list %}
-                    <OPTION value="{{ gender }}">{{gender}}</OPTION>
-                    {% endfor %}
-                </SELECT>
-                <br>
-                {{form.height_inches.label}} {{form.height_inches()}}<br>
-                {{form.color.label}} {{form.color()}}<br>
-                {{form.favorite_food.label}} {{form.favorite_food()}}<br>
-                {{form.submit()}}<br>
+                <div class="row">
+                    <div class="col-4">
+                        {{form.hidden_tag()}}
+                    </div>
+                    <div class="col-8">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        {{form.owner_id.label}}
+                    </div>
+                    <div class="col-8">
+                        <SELECT name="owner_id" class="col-12">
+                            {% for id in owner_list %}
+                            <OPTION value={{ id.owner_id }}>{{id.owner_name}}</OPTION>
+                            {% endfor %}
+                        </SELECT>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        {{form.puppy_name.label}}
+                    </div>
+                    <div class="col-8">
+                        {{form.puppy_name(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        {{form.age.label}}
+                    </div>
+                    <div class="col-8">
+                        {{form.age(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        {{form.gender.label}}
+                    </div>
+                    <div class="col-8">
+                        <SELECT name="gender" class="col-12">
+                            {% for gender in gender_list %}
+                            <OPTION value="{{ gender }}">{{gender}}</OPTION>
+                            {% endfor %}
+                        </SELECT>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        {{form.height_inches.label}}
+                    </div>
+                    <div class="col-8">
+                        {{form.height_inches(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        {{form.color.label}}
+                    </div>
+                    <div class="col-8">
+                        {{form.color(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        {{form.favorite_food.label}}
+                    </div>
+                    <div class="col-8">
+                        {{form.favorite_food(class="col-12 input")}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                        {{form.submit(class="mt-4 col-3 btn btn-primary")}}
+                    </div>
+                </div>
             </form>
         </div>
     </div>

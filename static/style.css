@@ -1,8 +1,0 @@
-#owner, #name, #nickname, #height_in_inches, #color, #favorite_food {
-    width: 300px;
-    border-radius: 25%;
-}
-
-submit {
-    padding-top: 25px;
-}
