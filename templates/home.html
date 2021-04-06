@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
 
-<div class="jumbotron">
-    <h1>Welcome</h1>
+<div class="jumbotron text-center">
+    <div class="row">
+        <div class="col-12">
+            <h1>Welcome to Jersey For Puppies</h1>
+            <h2>DAMS (Data Management System)</h2>
+        </div>
+    </div>
+    <div class="row">
+            <img src="{{url_for('static', filename='pup.jpg')}}" style="max-width: 500px; height: auto; border-radius: 50px; margin: auto; margin-top: 25px; box-shadow: 0 0 10px rgb(200,200,200);">
+        </div>
+    </div>
 </div>
 
 {% endblock %}

@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
 from sqlalchemy.exc import NoSuchTableError
 
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'mysecretkey'
