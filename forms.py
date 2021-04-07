@@ -16,7 +16,6 @@ class AddPup(FlaskForm):
 class RemovePup(FlaskForm):
 
     puppy_id = IntegerField("Puppy's ID: ")
-    puppy_name = StringField("Puppy's Name: ")
     submit = SubmitField('Remove')
 
 

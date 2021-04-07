@@ -15,10 +15,10 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-10 mx-auto">
-            <form method="POST">
+            
                 <div class="row">
                     <div class="col-5 col-sm-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
-                        {{form.hidden_tag()}}
+                        
                     </div>
                     <div class="col-7 col-sm-8">
                     </div>
@@ -28,51 +28,71 @@
                         <h3>List of Puppies <span style="font-size: .7em;">(by owner)</span></h3>
                     </div>
                 </div>
-                {% for owner in owner_list %}
+                {% for owner in owner_list if owner.puppies %}
+                
                 <div class="row" class="owner-borders">
-                    <div class="col-12 pl-md-5 owner-borders" style="font-family: 'Sawarabi Mincho', sans-serif; font-size: 1.25em;">
-                        {{ owner.owner_name.title() }}
+                    <div class="col-12 owner-borders" style="font-family: 'Sawarabi Mincho', sans-serif; font-size: 1.1em;">
+
+                        <div class="row">
+                            <div class="col-12 col-sm-4">Owner Name: </div>
+                            <div class="col-12 col-sm-8">{{ owner.owner_name.title() }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4"> </div>
+                            <div class="col-12 col-sm-8">{{ owner.address.title() }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4"> </div>
+                            <div class="col-12 col-sm-8">{{ owner.city.title() }}, {{ owner.state.upper() }} {{ owner.zipcode }}</div>
+                        </div>
+
                     </div>
                     <div class="col-12">
                         {% for pup in owner.puppies %}
+                        
                         <div class="row d-flex align-items-start ml-md-5"   >
                             <div class="col-12 my-1">
-                                {{ form.puppy_id(style="display:none", value=pup.puppy_id) }}
                                 <span class="pup-name">{{ pup.puppy_name.title() }}</span><br>
                                 <div class="row">
                                     <div class="col-4 pl-md-5">
                                         <span>Age: </span><br>
                                         <span>Gender: </span><br>
-                                        <span>Height (in): </span><br>
+                                        <span>Height: </span><br>
                                         <span>Color: </span><br>
                                         <span>Favorite Food: </span><br>
                                     </div>
                                     <div class="col-4">
                                         <span>{{ pup.age }}</span><br>
                                         <span>{{ pup.gender }}</span><br>
-                                        <span>{{ pup.height_inches }}</span><br>
+                                        <span>{{ pup.height_inches }} in.</span><br>
                                         <span>{{ pup.color }}</span><br>
                                         <span>{{ pup.favorite_food.title() }}</span><br>
                                     </div>
                                     <div class="col-4 d-flex align-items-start justify-content-center">
+                                        <form method="POST">
+                                        {{form.hidden_tag()}}
+                                        {{ form.puppy_id(style="display:none", value=pup.puppy_id) }}
                                         {{form.submit(class="my-1 btn btn-primary")}}
+                                        </form>
                                     </div>
                                 </div>
                                 <br>
                             </div>
                         </div>
+                        
                         {% endfor %}
 
 
                     </div>
                 </div>
+                
                 {% endfor %}
                 <!-- <div class="row">
                     <div class="col-12 d-flex justify-content-end">
                         {{form.submit(class="mt-4 col-3 btn btn-primary")}}
                     </div>
                 </div> -->
-            </form>
+            
         </div>
     </div>
 </div>

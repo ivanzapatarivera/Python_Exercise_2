@@ -35,7 +35,7 @@ class Owner(db.Model):
     address = db.Column(db.Text)
     city = db.Column(db.Text)
     state = db.Column(db.Text)
-    zipcode = db.Column(db.Numeric(5))
+    zipcode = db.Column(db.Text)
     puppies = db.relationship('Puppy', lazy = 'select', backref = db.backref('pup', lazy='joined'))
 
     def __init__(self, owner_name, address, city, state, zipcode):
