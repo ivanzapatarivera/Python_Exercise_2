@@ -25,7 +25,7 @@ data_owner['state'] = data_owner['state'].str.upper()
 print(data_owner.head()) # Printing results
 
 # Querying the amount of records in table using Pandas' len(dataframe)
-owner_count_rows = 'Number of records in \'owner\' table:  ' + str(len(df_owner))
+owner_count_rows = 'Number of records in \'owner\' table:  ' + str(len(data_owner))
 print(owner_count_rows) # Printing count of rows
 
 # Querying the amount of columns in table using Pandas' .count() by calling dataframe
@@ -47,20 +47,20 @@ data_puppies['age'] = data_puppies['age'].astype(int)
 data_puppies['favorite_food'] = data_puppies['favorite_food'].str.title()
 
 # Setting dataframe for puppies table
-df_puppies = pd.DataFrame(data_puppies)
+# df_puppies = pd.DataFrame(data_puppies)
 
 # Printing 'owner' table head for reference
-print(df_puppies.head())
+print(data_puppies.head())
 
 # Querying the amount of records in table using Pandas' len(dataframe)
-puppies_count_rows = 'Number of records in \'puppies\' table:  ' + str(len(df_puppies))
+puppies_count_rows = 'Number of records in \'puppies\' table:  ' + str(len(data_puppies))
 print(puppies_count_rows)
 
 # Querying the amount of columns in table using Pandas' .count() by calling dataframe
-puppies_count_columns = 'Number of columns in \'puppies\' table:  ' + str(df_puppies.count(axis = 1)[0])
+puppies_count_columns = 'Number of columns in \'puppies\' table:  ' + str(data_puppies.count(axis = 1)[0])
 print(puppies_count_columns)
 
 # Querying the amount of puppies by color
-df_puppies['age'] = df_puppies['age'].astype(int)
-puppies_groupby_attribute = df_puppies.groupby(['color']).size()
+data_puppies['age'] = data_puppies['age'].astype(int)
+puppies_groupby_attribute = data_puppies.groupby(['color']).size()
 print(puppies_groupby_attribute)
