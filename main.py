@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
 from sqlalchemy.exc import NoSuchTableError
-from forms import AddPup, AddOwner
+from forms import AddPup, RemovePup, AddOwner
 
 
 app = Flask(__name__)
@@ -103,7 +103,7 @@ except:
 def index():
     return render_template('home.html')
 
-@app.route('/add_owner', methods=['GET', 'POST'])
+@app.route('/add_owner', methods = ['GET', 'POST'])
 def add_owner():
 
     form = AddOwner()
@@ -124,7 +124,7 @@ def add_owner():
     return render_template('add_owner.html', form = form)
 
 
-@app.route('/add_pup', methods=['GET','POST'])
+@app.route('/add_pup', methods = ['GET','POST'])
 def add_pup():
 
     form = AddPup()
@@ -154,6 +154,26 @@ def add_pup():
     owner_list = Owner.query.all()
     print(owner_list)
     return render_template('add_puppy.html', form = form, owner_list = owner_list, gender_list = gender_list)
+
+
+@app.route('/del_pup', methods = ['GET', 'POST'])
+def remove_pup():
+
+    form = RemovePup()
+
+    if form.validate_on_submit():
+
+        puppy_id = form.puppy_id.data
+        this_puppy = Puppy.query.get(puppy_id)
+
+        db.session.delete(this_puppy)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+    puppy_list = Puppy.query.all()
+    print(puppy_list)
+    return render_template('del_puppy.html', form = form, puppy_list = puppy_list)
 
 
 
