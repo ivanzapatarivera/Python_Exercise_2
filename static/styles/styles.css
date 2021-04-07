@@ -7,3 +7,9 @@
     padding-right: 15px;
     height: 30px;
 }
+
+.owner-borders {
+    border-width: 1px 0px;
+    border-style: dotted;
+    background-color: aliceblue;
+}
