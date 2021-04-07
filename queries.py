@@ -17,7 +17,10 @@ data_puppies = pd.read_sql_table('puppies', engine)
 # Setting dataframe for owner table
 df_owner = pd.DataFrame(data_owner)
 
-# Printing 'owner' table head for reference
+# Printing 'owner' table head for reference formatting data
+data_owner['owner_name'] = data_owner['owner_name'].str.capitalize()
+data_owner['address'] = data_owner['address'].str.title()
+data_owner['city'] = data_owner['city'].str.title()
 data_owner['state'] = data_owner['state'].str.upper()
 print(data_owner.head()) # Printing results
 
@@ -39,6 +42,9 @@ print(owner_groupby_attribute) # Printing count of owners by state, then by zipc
 ### PUPPIES QUERIES ###
 #######################
 
+data_puppies['puppy_name'] = data_puppies['puppy_name'].str.title()
+data_puppies['age'] = data_puppies['age'].astype(int)
+data_puppies['favorite_food'] = data_puppies['favorite_food'].str.title()
 
 # Setting dataframe for puppies table
 df_puppies = pd.DataFrame(data_puppies)
