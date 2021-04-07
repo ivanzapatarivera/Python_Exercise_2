@@ -34,6 +34,7 @@ owner_groupby_attribute = data_owner.groupby(['state']).size()
 print(owner_groupby_attribute) # Printing count of owners by state, then by zipcode columns
 
 
+
 #######################
 ### PUPPIES QUERIES ###
 #######################
