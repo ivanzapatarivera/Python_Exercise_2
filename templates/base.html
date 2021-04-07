@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Jersey For Puppies DAMS (Data Management System)"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
-<title>Jersey For Puppies PAWS (Puppy Analytics Warehousing System)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Jersey For Puppies DAMS (Data Management System)" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <title>Jersey For Puppies PAWS (Puppy Analytics Warehousing System)</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="{{url_for('index')}}">Home</a>  
+        <a class="navbar-brand" href="{{url_for('index')}}">
+            <img src="{{url_for('static', filename='pup.jpg')}}" style="max-width: 100px; height: auto; border-radius: 10px; margin: auto; box-shadow: 0 0 10px rgb(200,200,200);" /> &emsp;Jersey PAWS
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{{url_for('add_owner')}}">New Owner</a>
+                <a class="nav-item nav-link" href="{{url_for('add_pup')}}">New Puppy</a>
+                <a class="nav-item nav-link" href="{{url_for('del_pup')}}">Remove Puppy</a>
+                <a class="nav-item nav-link" href="{{url_for('list_pup')}}">Puppies List</a>
+            </div>
+        </div>
+        <!-- <div class="navbar-nav">
             <a class="nav-item nav-link" href="{{url_for('list_pup')}}">See Registered Puppies</a>  
             <a class="nav-item nav-link" href="{{url_for('add_owner')}}">Register Owner</a>  
             <a class="nav-item nav-link" href="{{url_for('add_pup')}}">Register Puppy</a>  
             <a class="nav-item nav-link" href="{{url_for('del_pup')}}">Remove Puppy</a>  
-        </div>
+        </div> -->
     </nav>
     {% block content %}
-    
+
     {% endblock %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>
