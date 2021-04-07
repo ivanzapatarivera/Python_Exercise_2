@@ -157,7 +157,7 @@ def add_pup():
 
 
 @app.route('/del_pup', methods = ['GET', 'POST'])
-def remove_pup():
+def del_pup():
 
     form = RemovePup()
 
