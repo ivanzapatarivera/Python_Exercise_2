@@ -15,6 +15,8 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 
 ### MySQL DATABASE SECTION ###
 import config
+
+# Importing environmental variables using config.py
 from config import username, password, server, database, db_uri
 
 # basedir = os.path.abspath(os.path.dirname(__file__))
@@ -75,10 +77,6 @@ class Puppy(db.Model):
     def __repr__(self):
         return f"{self.puppy_name}'s favorite food is {self.favorite_food}."
 
-   
-    # def __repr__(self):
-    #     return f'Puppy\'s name is {self.name}. \n And has been adopted by {self.owner}. \n S/he loves {self.favorite_food} and likes to be called by {self.nickname}! \n \n Here are some facts! \n ID: {self.puppy_id} \n Furr Color: {self.color} \n Height (in): {self.height_in_inches}'
-
 
 # Query to select all data from table puppies and force an error to create tables if needed
 sql = 'SELECT * FROM puppies INNER JOIN owner'
@@ -100,10 +98,27 @@ except:
 
 
 
+##############################################
+###############    ROUTES    #################
+##############################################
+
+
+# Home Page
 @app.route('/')
 def index():
     return render_template('home.html')
 
+
+# List of all registered owners and puppies 
+@app.route('/list')
+def list_pup():
+
+    puppy_list = Puppy.query.order_by(Puppy.puppy_name)
+    owner_list = Owner.query.order_by(Owner.owner_name)
+    return render_template('list.html', puppy_list = puppy_list, owner_list = owner_list)
+
+
+# Add owner into database
 @app.route('/add_owner', methods = ['GET', 'POST'])
 def add_owner():
 
@@ -125,16 +140,12 @@ def add_owner():
     return render_template('add_owner.html', form = form)
 
 
+# Add puppy into database
 @app.route('/add_pup', methods = ['GET','POST'])
 def add_pup():
 
     form = AddPup()
-    
-    # owner_list = session.query(Owner.owner_id, Owner.owner_name)
-    # owner_list = session.execute('SELECT owner_id, CONCAT(UCASE(LEFT(owner_name,1)), LCASE(SUBSTRING(owner_name, 2))) AS owner_name FROM python_exercise_2.owner')
-    
-    # our_user = session.query(User).filter_by(name='ed').first() 
-    gender_list = ['Female', 'Male', 'Non-binary', 'Unknown']
+     
 
     if form.validate_on_submit():
 
@@ -152,11 +163,12 @@ def add_pup():
 
         return redirect(url_for('index'))
     
+    gender_list = ['Female', 'Male', 'Non-binary', 'Unknown']
     owner_list = Owner.query.all()
-    print(owner_list)
     return render_template('add_puppy.html', form = form, owner_list = owner_list, gender_list = gender_list)
 
 
+# Delete puppy from database
 @app.route('/del_pup', methods = ['GET', 'POST'])
 def del_pup():
 
@@ -172,9 +184,8 @@ def del_pup():
 
         return redirect(url_for('index'))
 
-    puppy_list = Puppy.query.all()
-    owner_list = Owner.query.all()
-    print(puppy_list)
+    puppy_list = Puppy.query.order_by(Puppy.puppy_name)
+    owner_list = Owner.query.order_by(Owner.owner_name)
     return render_template('del_puppy.html', form = form, puppy_list = puppy_list, owner_list = owner_list)
 
 
