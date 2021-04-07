@@ -29,7 +29,7 @@
                     <div class="col-8">
                         <SELECT name="owner_id" class="col-12 input">
                             {% for id in owner_list %}
-                            <OPTION value={{ id.owner_id }}>{{id.owner_name}}</OPTION>
+                            <OPTION value={{ id.owner_id }}>{{id.owner_name.capitalize()}}</OPTION>
                             {% endfor %}
                         </SELECT>
                     </div>
@@ -57,7 +57,7 @@
                     <div class="col-8">
                         <SELECT name="gender" class="col-12 input">
                             {% for gender in gender_list %}
-                            <OPTION value="{{ gender }}">{{gender}}</OPTION>
+                            <OPTION value="{{ gender }}">{{gender.lower()}}</OPTION>
                             {% endfor %}
                         </SELECT>
                     </div>
