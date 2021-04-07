@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-12">
 
-                    {% for pup in owner.puppies %}
+                    {% for pup in owner.puppies | sort(attribute='puppy_name') %}
 
                     <div class="row d-flex align-items-start">
                         <div class="col-12 mt-2">

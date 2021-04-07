@@ -113,7 +113,7 @@ def index():
 @app.route('/list')
 def list_pup():
 
-    puppy_list = Puppy.query.order_by(Puppy.puppy_name)
+    puppy_list = Puppy.query.all()
     owner_list = Owner.query.order_by(Owner.owner_name)
     return render_template('list.html', puppy_list = puppy_list, owner_list = owner_list)
 
@@ -184,7 +184,7 @@ def del_pup():
 
         return redirect(url_for('index'))
 
-    puppy_list = Puppy.query.order_by(Puppy.puppy_name)
+    puppy_list = Puppy.query.all()
     owner_list = Owner.query.order_by(Owner.owner_name)
     return render_template('del_puppy.html', form = form, puppy_list = puppy_list, owner_list = owner_list)
 
