@@ -7,14 +7,13 @@ from config import db_uri
 engine = sql.create_engine(db_uri)
 
 # Calling and reading local CSV file
-# owner_filename = 'owner_batch.csv'
-# data = pd.read_csv(owner_filename)
+owner_filename = 'owner_batch.csv'
+data = pd.read_csv(owner_filename)
+print(data) # Validating file exists
 
-# # Defining dataframe (df) with Pandas
-# df = pd.DataFrame(data, columns = ['owner_id', 'owner_name', 'address', 'city', 'state', 'zipcode'])
-
-# # Releasing BATCH to MySQL
-# df.to_sql(con = engine, name = 'owner', if_exists='append', index = False)
+# Defining dataframe (df) with Pandas
+df = pd.DataFrame(data, columns = ['owner_id', 'owner_name', 'address', 'city', 'state', 'zipcode'])
+df.to_sql(con = engine, name = 'owner', if_exists='append', index = False) # Releasing BATCH to MySQL
 
 
 # Validating all records were inserted successfully
@@ -23,14 +22,3 @@ df_query = pd.read_sql_query(query, engine)
 print('** CONNECTED **')
 print(df_query)
 print('***************')
-
-# query2 = "INSERT INTO owner (owner_name, address, city, state, zipcode) VALUES (%s, %s, %s, %s, %s)"
-# owner_filename = 'owner_batch.csv'
-# data = pd.read_csv(owner_filename)
-# df2 = pd.DataFrame(data, columns = ['owner_id', 'owner_name', 'address', 'city', 'state', 'zipcode'])
-# df3 = pd.read_sql_query(query2, engine)
-
-
-# print('***************')
-# print(df1)
-# print('***************')
