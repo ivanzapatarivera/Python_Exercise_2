@@ -19,7 +19,7 @@ df_owner = pd.DataFrame(data_owner)
 
 # Printing 'owner' table head for reference
 data_owner['state'] = data_owner['state'].str.upper()
-print(data_owner.head(12)) # Printing results
+print(data_owner.head()) # Printing results
 
 # Querying the amount of records in table using Pandas' len(dataframe)
 owner_count_rows = 'Number of records in \'owner\' table:  ' + str(len(df_owner))
