@@ -39,20 +39,20 @@
                         </div>
                         <div class="row">
                             <div class="col-12 col-sm-4"> </div>
-                            <div class="col-12 col-sm-8">{{ owner.address.title() }}</div>
+                            <div class="col-12 col-sm-8" style="font-size: .85em;">{{ owner.address.title() }}</div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-sm-4"> </div>
-                            <div class="col-12 col-sm-8">{{ owner.city.title() }}, {{ owner.state.upper() }} {{ owner.zipcode }}</div>
+                            <div class="col-12 col-sm-8" style="font-size: .85em;">{{ owner.city.title() }}, {{ owner.state.upper() }} {{ owner.zipcode }}</div>
                         </div>
 
                     </div>
                     <div class="col-12">
                         {% for pup in owner.puppies %}
                         
-                        <div class="row d-flex align-items-start ml-md-5"   >
-                            <div class="col-12 my-1">
-                                <span class="pup-name">{{ pup.puppy_name.title() }}</span><br>
+                        <div class="row d-flex align-items-start"   >
+                            <div class="col-12 mt-2">
+                                <span class="pup-name pl-md-3">{{ pup.puppy_name.title() }}</span><br>
                                 <div class="row">
                                     <div class="col-4 pl-md-5">
                                         <span>Age: </span><br>
