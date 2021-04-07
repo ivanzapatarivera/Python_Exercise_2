@@ -7,6 +7,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
 from sqlalchemy.exc import NoSuchTableError
 from forms import AddPup, RemovePup, AddOwner
+import tkinter
+
+# Importing tkinter for alert boxes on submit
+from tkinter import messagebox
 
 
 app = Flask(__name__)
@@ -135,6 +139,7 @@ def add_owner():
         db.session.add(added_owner)
         db.session.commit()
 
+        messagebox.showinfo('Confirmation', 'Owner has been added to PAWS.')
         return redirect(url_for('index'))
     
     return render_template('add_owner.html', form = form)
@@ -161,7 +166,8 @@ def add_pup():
         db.session.add(added_puppy)
         db.session.commit()
 
-        return redirect(url_for('index'))
+        messagebox.showinfo('Confirmation', 'Puppy has been added to PAWS.')
+        return redirect(url_for('list_pup'))
     
     gender_list = ['Female', 'Male', 'Non-binary', 'Unknown']
     owner_list = Owner.query.all()
@@ -182,7 +188,9 @@ def del_pup():
         db.session.delete(this_puppy)
         db.session.commit()
 
-        return redirect(url_for('index'))
+
+
+        return redirect(url_for('del_pup'))
 
     puppy_list = Puppy.query.all()
     owner_list = Owner.query.order_by(Owner.owner_name)
