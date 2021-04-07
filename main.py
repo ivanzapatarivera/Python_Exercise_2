@@ -36,6 +36,7 @@ class Owner(db.Model):
     city = db.Column(db.Text)
     state = db.Column(db.Text)
     zipcode = db.Column(db.Numeric(5))
+    puppies = db.relationship('Puppy', lazy = 'select', backref = db.backref('pup', lazy='joined'))
 
     def __init__(self, owner_name, address, city, state, zipcode):
         self.owner_name = owner_name.lower()
@@ -172,8 +173,9 @@ def del_pup():
         return redirect(url_for('index'))
 
     puppy_list = Puppy.query.all()
+    owner_list = Owner.query.all()
     print(puppy_list)
-    return render_template('del_puppy.html', form = form, puppy_list = puppy_list)
+    return render_template('del_puppy.html', form = form, puppy_list = puppy_list, owner_list = owner_list)
 
 
 

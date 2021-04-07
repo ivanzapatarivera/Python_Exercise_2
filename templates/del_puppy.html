@@ -6,7 +6,8 @@
     <div class="row mb-5">
         <div class="col-12 col-md-8 mx-auto">
             <div class="text-center">
-                <img src="{{url_for('static', filename='pup.jpg')}}" style="max-width: 250px; height: auto; border-radius: 25px; box-shadow: 0 0 10px rgb(200,200,200);">
+                <img src="{{url_for('static', filename='pup.jpg')}}"
+                    style="max-width: 250px; height: auto; border-radius: 25px; box-shadow: 0 0 10px rgb(200,200,200);">
             </div>
             <h1 class="my-2 text-center">Jersey PAWS System</h1>
             <h4 class="text-center">Remove Puppy</h4>
@@ -22,23 +23,39 @@
                     <div class="col-7 col-sm-8">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-5 col-sm-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
-                        {{form.puppy_id.label}}
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h3>List of Puppies</h3>
                     </div>
-                    <div class="col-7 col-sm-8">
-                        <SELECT name="puppy_id" class="col-12 input">
-                            {% for id in puppy_list %}
-                            <OPTION value={{ id.puppy_id }}>{{id.puppy_name.capitalize()}}</OPTION>
-                            {% endfor %}
-                        </SELECT>
-                    </div>
-                </div>                
+                </div>
+                {% for owner in owner_list %}
                 <div class="row">
+                    <div class="col-12" style="font-family: 'Sawarabi Mincho', sans-serif;">
+                        &emsp;{{ owner.owner_name.title() }}
+                    </div>
+                    <div class="col-12">
+                        {% for pup in owner.puppies %}
+                        <div class="row d-flex align-items-start ml-5"   >
+                            <div class="col-10 my-1">
+                                {{ pup.puppy_name.title() }}                                
+                                {{ form.puppy_id(style="display:none", value=pup.puppy_id) }}
+                                <br>
+                            </div>
+                            <div class="col-2">
+                                {{form.submit(class="my-1 btn btn-primary")}}
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- <div class="row">
                     <div class="col-12 d-flex justify-content-end">
                         {{form.submit(class="mt-4 col-3 btn btn-primary")}}
                     </div>
-                </div>
+                </div> -->
             </form>
         </div>
     </div>
