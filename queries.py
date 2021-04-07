@@ -1,0 +1,41 @@
+import pandas as pd
+import sqlalchemy as sql
+from sqlalchemy import MetaData
+from config import db_uri
+
+engine = sql.create_engine(db_uri)
+
+data_owner = pd.read_sql_table('owner', engine)
+data_puppies = pd.read_sql_table('puppies', engine)
+
+
+
+#####################
+### OWNER QUERIES ###
+#####################
+
+
+# Dataframe for owner table
+df_owner = pd.DataFrame(data_owner)
+
+# Printing 'owner' table head for reference
+data_owner['state'] = data_owner['state'].str.upper()
+print(data_owner.head(12)) # Printing results
+
+# Querying the amount of records in table using Pandas' len(dataframe)
+owner_count_rows = 'Number of records in \'owner\' table:  ' + str(len(df_owner))
+print(owner_count_rows) # Printing count of rows
+
+# Querying the amount of columns in table using Pandas' .count() by calling dataframe
+owner_count_columns = 'Number of columns in \'owner\' table:  ' + str(df_owner.count(axis = 1)[0])
+print(owner_count_columns) # Printing count of columns
+
+# Querying the amount of owners by zipcode located in each state
+owner_groupby_attribute = data_owner.groupby(['state', 'zipcode']).size()
+print(owner_groupby_attribute) # Printing count of owners by state, then by zipcode columns
+
+
+#####################
+### OWNER QUERIES ###
+#####################
+
