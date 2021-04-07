@@ -59,7 +59,7 @@ class Puppy(db.Model):
     puppy_id = db.Column(db.Integer, primary_key = True)
     owner_id = db.Column(db.Integer, ForeignKey(Owner.owner_id), nullable = False)
     puppy_name = db.Column(db.Text)
-    age = db.Column(db.Numeric(2,0))
+    age = db.Column(db.Numeric(2))
     gender = db.Column(db.Text)
     height_inches = db.Column(db.Numeric(precision = 3, scale = 1, asdecimal = True))
     color = db.Column(db.Text)

@@ -1,5 +1,0 @@
-puppy_id,owner_id,puppy_name,age,gender,height_inches,color,favorite_food
-1,1,berlin,2,female,24.0,gray,lamb
-2,1,paris,4,male,9.5,black,lamb
-3,2,"little snow",2,non-binary,12.0,white,"chicken treats"
-4,3,london,2,unknown,9.5,brown,"chicken treats"
