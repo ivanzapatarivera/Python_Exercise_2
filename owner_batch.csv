@@ -1,5 +1,11 @@
 owner_id,owner_name,address,city,state,zipcode
-1,phillippe,"43 lane st","los angeles",ca,90210
-2,jessica,"50 sam houston ln",houston,tx,77001
-3,david,"50 bleeker st",boston,ma,2008
-4,leslie,"93 broadway",newark,nj,7105
+5,marc,"120 elm st",miami,fl,30050
+6,frank,"151 johnson ave",austin,tx,77102
+7,maria,"746 clinton ct",philadelphia,pa,11203
+8,joanne,"12003 main st",littletown,ks,20303
+9,miles,"12034 main rd",smalltown,ms,24455
+10,luke,"74847 left ln",seattle,wa,98748
+11,moses,"836 ocean dr","san francisco",ca,98288
+12,hannah,"89 pines ave",albuquerque,nm,11253
+13,sarah,"345 valley st",phoenix,az,87989
+14,joel,"76 river rd","des moines",ia,56433
