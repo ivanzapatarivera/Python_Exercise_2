@@ -145,7 +145,7 @@ def add_owner():
     return render_template('add_owner.html', form = form)
 
 
-# Delete owner from database
+# Delete owner from database (will delete puppies with owner_id as foreign key)
 @app.route('/del_owner', methods = ['GET', 'POST'])
 def del_owner():
 
