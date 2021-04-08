@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row mb-5">
+        <div class="col-12 col-md-8 mx-auto">
+            <div class="text-center">
+                <img src="{{url_for('static', filename='pup.jpg')}}"
+                    style="max-width: 250px; height: auto; border-radius: 25px; box-shadow: 0 0 10px rgb(200,200,200);">
+            </div>
+            <h1 class="my-2 text-center">Jersey PAWS System</h1>
+            <h4 class="text-center">Remove Owner</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-10 mx-auto">
+
+            <div class="row mt-4">
+                <div class="col-12 mb-3">
+                    <h3>List of Owners <span style="font-size: .7em;">(by owner)</span></h3>
+                </div>
+            </div>
+
+            {% for owner in owner_list %}
+
+            <div class="row" class="owner-borders">
+                <div class="col-10 owner-borders" style="font-family: 'Sawarabi Mincho', sans-serif; font-size: 1.1em;">
+
+                    <div class="row">
+                        <div class="col-12 col-sm-4">Owner Name: </div>
+                        <div class="col-12 col-sm-8">{{ owner.owner_name.title() }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-4"> </div>
+                        <div class="col-12 col-sm-8" style="font-size: .85em;">{{ owner.address.title() }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-4"> </div>
+                        <div class="col-12 col-sm-8" style="font-size: .85em;">{{ owner.city.title() }}, {{
+                            owner.state.upper() }} {{ owner.zipcode }}</div>
+                    </div>
+
+                </div>
+                <div class="col-2 d-flex align-items-start justify-content-center">
+                    <form method="POST">
+                        {{form.hidden_tag()}}
+                        {{form.owner_id(style="display:none", value=owner.owner_id) }}
+                        {{form.submit(class="my-1 btn btn-primary")}}
+                    </form>
+                </div>                
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
