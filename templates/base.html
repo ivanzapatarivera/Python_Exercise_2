@@ -26,17 +26,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="{{url_for('add_owner')}}">New Owner</a>
+                <a class="nav-item nav-link" href="{{url_for('del_owner')}}">Remove Owner</a>
                 <a class="nav-item nav-link" href="{{url_for('add_pup')}}">New Puppy</a>
                 <a class="nav-item nav-link" href="{{url_for('del_pup')}}">Remove Puppy</a>
                 <a class="nav-item nav-link" href="{{url_for('list_pup')}}">Puppies List</a>
             </div>
         </div>
-        <!-- <div class="navbar-nav">
-            <a class="nav-item nav-link" href="{{url_for('list_pup')}}">See Registered Puppies</a>  
-            <a class="nav-item nav-link" href="{{url_for('add_owner')}}">Register Owner</a>  
-            <a class="nav-item nav-link" href="{{url_for('add_pup')}}">Register Puppy</a>  
-            <a class="nav-item nav-link" href="{{url_for('del_pup')}}">Remove Puppy</a>  
-        </div> -->
     </nav>
     {% block content %}
 

@@ -5,6 +5,7 @@ from flask import Flask, redirect, render_template, url_for
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
+# from sqlalchemy import backref 
 from sqlalchemy.exc import NoSuchTableError
 from forms import AddPup, RemovePup, AddOwner, RemoveOwner
 import tkinter
@@ -42,7 +43,8 @@ class Owner(db.Model):
     city = db.Column(db.Text)
     state = db.Column(db.Text)
     zipcode = db.Column(db.Text)
-    puppies = db.relationship('Puppy', lazy = 'select', backref = db.backref('pup', lazy='joined'))
+    puppies = db.relationship('Puppy', backref = 'pup', passive_deletes = True)
+    # puppies = db.relationship('Puppy', lazy = 'select', backref = db.backref('pup', lazy='joined'))
 
     def __init__(self, owner_name, address, city, state, zipcode):
         self.owner_name = owner_name.lower()
@@ -61,13 +63,14 @@ class Puppy(db.Model):
     __tablename__ = 'puppies'
     
     puppy_id = db.Column(db.Integer, primary_key = True)
-    owner_id = db.Column(db.Integer, ForeignKey(Owner.owner_id, ondelete = 'CASCADE', onupdate = 'CASCADE'), nullable = False)
+    owner_id = db.Column(db.Integer, ForeignKey(Owner.owner_id, ondelete = 'CASCADE', onupdate = 'CASCADE'), nullable = True)
     puppy_name = db.Column(db.Text)
     age = db.Column(db.Numeric(2, asdecimal = False))
     gender = db.Column(db.Text)
     height_inches = db.Column(db.Numeric(precision = 3, scale = 1, asdecimal = True))
     color = db.Column(db.Text)
     favorite_food = db.Column(db.Text)
+    # owners = db.relationship('Owner', backref = db.backref('puppies', passive_deletes = True))
 
     def __init__(self, owner_id, puppy_name, age, gender, height_inches, color, favorite_food):
         self.owner_id = owner_id
@@ -154,7 +157,7 @@ def del_owner():
     if form.validate_on_submit():
 
         owner_id = form.owner_id.data
-        this_owner = Puppy.query.get(owner_id)
+        this_owner = Owner.query.get(owner_id)
 
         db.session.delete(this_owner)
         db.session.commit()
