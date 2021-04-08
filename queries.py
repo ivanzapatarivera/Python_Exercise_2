@@ -42,8 +42,8 @@ print('Amount of columns in owner table : ' + str(amount_cols_owners) + '\nAmoun
 
 
 # Organizing new dataframe with owner id's and puppy names
-df_owner_id_in_puppies = pd.DataFrame(df_puppies['Owner ID']) # Creating dataframe of owner ID's in puppies
-df_owner_names = pd.DataFrame(df_owners[['Owner ID', 'Owner Name']]) # Creating dataframe of owners 
+df_owner_id_in_puppies = pd.DataFrame(df_puppies['Owner ID'])
+df_owner_names = pd.DataFrame(df_owners[['Owner ID', 'Owner Name']])
 
 df_joined_table = df_owner_names.merge(df_owner_id_in_puppies, how = 'left') # 'join left' of new datafrmes
 
@@ -65,11 +65,12 @@ puppies_color = puppies_color.reset_index().drop(['index'], axis = 1)
 print(puppies_color)
 
 
-
+# Obtaining amount of puppies by age on a single row
 less_than_five = len(df_puppies[df_puppies['Age'].between(0, 4)])
 between_five_and_ten = len(df_puppies[df_puppies['Age'].between(5, 10)])
 more_than_ten = len(df_puppies[df_puppies['Age'] > 10])
 
+# Creating dataframe to enclose puppies by age
 puppies_age = {'Less than 5': [less_than_five], 'Between 5 and 10': [between_five_and_ten], 'More than 10': [more_than_ten]}
 df_puppies_age = pd.DataFrame(puppies_age)
 
