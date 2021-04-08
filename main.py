@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import *
 from sqlalchemy.exc import NoSuchTableError
-from forms import AddPup, RemovePup, AddOwner
+from forms import AddPup, RemovePup, AddOwner, RemoveOwner
 import tkinter
 
 # Importing tkinter for alert boxes on submit
@@ -143,6 +143,26 @@ def add_owner():
         return redirect(url_for('index'))
     
     return render_template('add_owner.html', form = form)
+
+
+# Delete owner from database
+@app.route('/del_owner', methods = ['GET', 'POST'])
+def del_owner():
+
+    form = RemoveOwner()
+
+    if form.validate_on_submit():
+
+        owner_id = form.owner_id.data
+        this_owner = Puppy.query.get(owner_id)
+
+        db.session.delete(this_owner)
+        db.session.commit()
+
+        return redirect(url_for('del_owner'))
+
+    owner_list = Owner.query.order_by(Owner.owner_name)
+    return render_template('del_owner.html', form = form, owner_list = owner_list)
 
 
 # Add puppy into database
