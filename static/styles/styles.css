@@ -1,3 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+
+body {
+    border-color: #f3f4ed;
+}
+
+.navbar {
+    background-color: #1597bb;
+}
+
+.dropdown-menu {
+    background-color: #1597bb;
+    border: none;
+}
+
+.paws {
+    font-family: 'Happy Monkey', cursive;
+    font-size: 8rem;
+    color: #6e3602;
+}
+
+.paws_other {
+    font-family: 'Happy Monkey', cursive;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #6e3602;
+}
+
+.home_image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 25px;
+    margin: auto;
+    margin: 25px 0px;
+    box-shadow: 0 0 10px rgb(200,200,200);
+}
+
 .input {
     border-radius: 25px;
     border: 1px;
@@ -11,5 +49,5 @@
 .owner-borders {
     border-width: 1px 0px;
     border-style: dotted;
-    background-color: aliceblue;
+    background-color: #fbeeac;
 }

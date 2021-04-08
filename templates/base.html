@@ -15,9 +15,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow">
         <a class="navbar-brand" href="{{url_for('index')}}">
-            <img src="{{url_for('static', filename='pup.jpg')}}" style="max-width: 100px; height: auto; border-radius: 10px; margin: auto; box-shadow: 0 0 10px rgb(200,200,200);" /> &emsp;Jersey PAWS
+            <img src="{{url_for('static', filename='pup.jpg')}}" class="shadow-sm" style="max-width: 100px; height: auto; border-radius: 10px; margin: auto;" /> &emsp;Jersey PAWS
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -29,21 +29,21 @@
                 <a class="nav-link" href="{{url_for('list_pup')}}">Puppies List</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Owners
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{url_for('add_owner')}}">New Owner</a>
-                <a class="dropdown-item" href="{{url_for('del_owner')}}">Remove Owner</a>
+                <a class="dropdown-item text-light" href="{{url_for('add_owner')}}">New Owner</a>
+                <a class="dropdown-item text-light" href="{{url_for('del_owner')}}">Remove Owner</a>
               </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle  text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Puppies
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{url_for('add_pup')}}">New Puppy</a>
-                  <a class="dropdown-item" href="{{url_for('del_pup')}}">Remove Puppy</a>
+                  <a class="dropdown-item text-light" href="{{url_for('add_pup')}}">New Puppy</a>
+                  <a class="dropdown-item text-light" href="{{url_for('del_pup')}}">Remove Puppy</a>
                 </div>
               </li>
           </ul>
