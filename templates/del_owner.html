@@ -24,7 +24,7 @@
 
             {% for owner in owner_list %}
 
-            <div class="row" class="owner-borders">
+            <div class="row my-2" class="owner-borders">
                 <div class="col-10 owner-borders" style="font-family: 'Sawarabi Mincho', sans-serif; font-size: 1.1em;">
 
                     <div class="row">
@@ -42,10 +42,10 @@
                     </div>
 
                 </div>
-                <div class="col-2 d-flex align-items-start justify-content-center">
+                <div class="col-2 owner-borders d-flex align-items-center justify-content-center">
                     <form method="POST">
                         {{form.hidden_tag()}}
-                        {{form.owner_id(style="display:block", value=owner.owner_id) }}
+                        {{form.owner_id(style="display: none", value=owner.owner_id) }}
                         {{form.submit(class="my-1 btn btn-primary")}}
                     </form>
                 </div>                
