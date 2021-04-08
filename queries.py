@@ -45,7 +45,7 @@ df_data_puppies['puppy_name'] = df_data_puppies['puppy_name'].str.title()
 df_data_puppies['age'] = df_data_puppies['age'].astype(int)
 df_data_puppies['favorite_food'] = df_data_puppies['favorite_food'].str.title()
 
-# Printing 'owner' table head for reference
+# Printing 'puppies' table head for reference
 print(df_data_puppies.head())
 print('***************')
 print(df_data_puppies)
