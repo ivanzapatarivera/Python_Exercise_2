@@ -61,9 +61,9 @@ class Puppy(db.Model):
     __tablename__ = 'puppies'
     
     puppy_id = db.Column(db.Integer, primary_key = True)
-    owner_id = db.Column(db.Integer, ForeignKey(Owner.owner_id), nullable = False)
+    owner_id = db.Column(db.Integer, ForeignKey(Owner.owner_id, ondelete = 'CASCADE', onupdate = 'CASCADE'), nullable = False)
     puppy_name = db.Column(db.Text)
-    age = db.Column(db.Numeric(2))
+    age = db.Column(db.Numeric(2, asdecimal = False))
     gender = db.Column(db.Text)
     height_inches = db.Column(db.Numeric(precision = 3, scale = 1, asdecimal = True))
     color = db.Column(db.Text)
