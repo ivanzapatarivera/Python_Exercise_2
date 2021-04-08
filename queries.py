@@ -47,6 +47,8 @@ df_data_puppies['favorite_food'] = df_data_puppies['favorite_food'].str.title()
 
 # Printing 'owner' table head for reference
 print(df_data_puppies.head())
+print('***************')
+print(df_data_puppies)
 
 # Querying the amount of records in table using Pandas' len(dataframe)
 puppies_count_rows = 'Number of records in \'puppies\' table:  ' + str(len(df_data_puppies))
