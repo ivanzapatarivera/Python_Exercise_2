@@ -28,3 +28,7 @@ class AddOwner(FlaskForm):
     zipcode = IntegerField("Zip Code: ")
     submit = SubmitField('Add')
 
+class RemoveOwner(FlaskForm): 
+
+    owner_id = IntegerField("Owner's ID: ")
+    submit = SubmitField('Remove')
