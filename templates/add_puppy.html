@@ -54,7 +54,7 @@
                     <div class="col-5 col-sm-4" style="font-family: 'Sawarabi Mincho', sans-serif;">
                         {{form.gender.label}}
                     </div>
-                    <div class="col-7 col-sm-8">
+                    <div class="col-7 col-sm-8">    
                         <SELECT name="gender" class="col-12 input">
                             {% for gender in gender_list | sort(attribute = 'gender') %}
                             <OPTION value="{{ gender }}">{{gender.lower()}}</OPTION>
