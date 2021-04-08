@@ -49,5 +49,5 @@ body {
 .owner-borders {
     border-width: 1px 0px;
     border-style: dotted;
-    background-color: #fbeeac;
+    background-color: rgba(255,236,144, .3);
 }
