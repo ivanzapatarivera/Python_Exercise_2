@@ -1,64 +1,79 @@
 import pandas as pd
+import pandas.io.formats.style 
+import numpy as np
 import sqlalchemy as sql
-from sqlalchemy import MetaData
 from config import db_uri
 
 engine = sql.create_engine(db_uri)
 
+df_owners = pd.read_sql_table('owner', engine)
+df_puppies = pd.read_sql_table('puppies', engine)
 
-# Dataframes for tables in db
-df_data_owner = pd.read_sql_table('owner', engine)
-df_data_puppies = pd.read_sql_table('puppies', engine)
-
-
-#####################
-### OWNER QUERIES ###
-#####################
+# Renaming columns for owners dataframe
+df_owners = df_owners.rename(columns= { "owner_id": "Owner ID", "owner_name": "Owner Name", "address": "Address", "city": "City", "state": "State", "zipcode": "Zip Code" })
+df_puppies = df_puppies.rename(columns= { "puppy_id": "Puppy ID", "owner_id": "Owner ID", "puppy_name": "Puppy Name", "age": "Age", "gender": "Gender", "height_inches": "Height (in)", "color": "Color", "favorite_food": "Favorite Food" })
 
 
-# Printing 'owner' table head for reference formatting data
-df_data_owner['owner_name'] = df_data_owner['owner_name'].str.capitalize()
-df_data_owner['address'] = df_data_owner['address'].str.title()
-df_data_owner['city'] = df_data_owner['city'].str.title()
-df_data_owner['state'] = df_data_owner['state'].str.upper()
-print(df_data_owner.head()) # Printing results
-
-# Querying the amount of records in table using Pandas' len(dataframe)
-owner_count_rows = 'Number of records in \'owner\' table:  ' + str(len(df_data_owner))
-print(owner_count_rows) # Printing count of rows
-
-# Querying the amount of columns in table using Pandas' .count() by calling dataframe
-owner_count_columns = 'Number of columns in \'owner\' table:  ' + str(df_data_owner.count(axis = 1)[0])
-print(owner_count_columns) # Printing count of columns
-
-# Querying the amount of owners by zipcode located in each state
-owner_groupby_attribute = df_data_owner.groupby(['state']).size()
-print(owner_groupby_attribute) # Printing count of owners by state, then by zipcode columns
+# Capitalizing names in owner table results
+df_owners['Owner Name'] = df_owners['Owner Name'].str.capitalize()
+df_owners['Address'] = df_owners['Address'].str.title()
+df_owners['City'] = df_owners['City'].str.title()
+df_owners['State'] = df_owners['State'].str.upper()
 
 
+# Capitalizing names in puppies table results
+df_puppies['Puppy Name'] = df_puppies['Puppy Name'].str.capitalize()
+df_puppies['Favorite Food'] = df_puppies['Favorite Food'].str.title()
 
-#######################
-### PUPPIES QUERIES ###
-#######################
+print(df_owners.head(2))
+print(df_puppies)
 
-df_data_puppies['puppy_name'] = df_data_puppies['puppy_name'].str.title()
-df_data_puppies['age'] = df_data_puppies['age'].astype(int)
-df_data_puppies['favorite_food'] = df_data_puppies['favorite_food'].str.title()
 
-# Printing 'puppies' table head for reference
-print(df_data_puppies.head())
-print('***************')
-print(df_data_puppies)
+# Querying the amount of owners and puppies registered
+amount_owners = len(df_owners)
+amount_puppies = len(df_puppies)
+print('Amount of owners registered: ' + str(amount_owners) + '\nAmount of puppies registered: ' + str(amount_puppies))
 
-# Querying the amount of records in table using Pandas' len(dataframe)
-puppies_count_rows = 'Number of records in \'puppies\' table:  ' + str(len(df_data_puppies))
-print(puppies_count_rows)
 
-# Querying the amount of columns in table using Pandas' .count() by calling dataframe
-puppies_count_columns = 'Number of columns in \'puppies\' table:  ' + str(df_data_puppies.count(axis = 1)[0])
-print(puppies_count_columns)
+# Querying amount of columns in tables
+amount_cols_owners = df_owners.count(axis = 1)[0]
+amount_cols_pupppies = df_puppies.count(axis = 1)[0]
+print('Amount of columns in owner table : ' + str(amount_cols_owners) + '\nAmount of columns in puppies table: ' + str(amount_cols_pupppies))
 
-# Querying the amount of puppies by color
-df_data_puppies['age'] = df_data_puppies['age'].astype(int)
-puppies_groupby_attribute = df_data_puppies.groupby(['color']).size()
-print(puppies_groupby_attribute)
+
+# Organizing new dataframe with owner id's and puppy names
+df_owner_id_in_puppies = pd.DataFrame(df_puppies['Owner ID']) # Creating dataframe of owner ID's in puppies
+df_owner_names = pd.DataFrame(df_owners[['Owner ID', 'Owner Name']]) # Creating dataframe of owners 
+
+df_joined_table = df_owner_names.merge(df_owner_id_in_puppies, how = 'left') # 'join left' of new datafrmes
+
+
+puppies_per_owner = ((df_joined_table.groupby(['Owner Name']).size()).reset_index(name = 'Total Puppies')).sort_values(by = ['Total Puppies'], ascending = False)
+puppies_per_owner = puppies_per_owner.reset_index().drop(['index'], axis = 1)
+print(puppies_per_owner) 
+
+
+# Obtaining sorted amount of favorite food by ranking
+df_puppies = df_puppies.rename(columns = {'Favorite Food': 'Top Favorite Foods'})
+favorite_food = ((df_puppies.groupby(['Top Favorite Foods']).size()).reset_index(name = 'Totals')).sort_values(by = ['Totals'], ascending = False)
+favorite_food = favorite_food.reset_index().drop(['index'], axis = 1)
+print(favorite_food)
+
+# Obtaining sorted amount of puppies by color
+puppies_color = ((df_puppies.groupby(['Color']).size()).reset_index(name = 'Totals')).sort_values(by = ['Totals'], ascending = False)
+puppies_color = puppies_color.reset_index().drop(['index'], axis = 1)
+print(puppies_color)
+
+
+
+less_than_five = len(df_puppies[df_puppies['Age'].between(0, 4)])
+between_five_and_ten = len(df_puppies[df_puppies['Age'].between(5, 10)])
+more_than_ten = len(df_puppies[df_puppies['Age'] > 10])
+
+puppies_age = {'Less than 5': [less_than_five], 'Between 5 and 10': [between_five_and_ten], 'More than 10': [more_than_ten]}
+df_puppies_age = pd.DataFrame(puppies_age)
+
+print(less_than_five)
+print(between_five_and_ten)
+print(more_than_ten)
+print(df_puppies_age)
