@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-7 col-sm-8">
                         <SELECT name="owner_id" class="col-12 input">
-                            {% for id in owner_list %}
+                            {% for id in owner_list | sort(attribute = "owner_name") %}
                             <OPTION value={{ id.owner_id }}>{{id.owner_name.capitalize()}}</OPTION>
                             {% endfor %}
                         </SELECT>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-7 col-sm-8">
                         <SELECT name="gender" class="col-12 input">
-                            {% for gender in gender_list %}
+                            {% for gender in gender_list | sort(attribute = 'gender') %}
                             <OPTION value="{{ gender }}">{{gender.lower()}}</OPTION>
                             {% endfor %}
                         </SELECT>
