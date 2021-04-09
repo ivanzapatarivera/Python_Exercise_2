@@ -108,13 +108,13 @@ To load your first batch of data stored in current directory run the following c
 
 Contribution requests may be sent to:
 
-Email: [ivan.zapata-rivera@gmail.com](mailto:ivan.zapata-rivera@gmail.com)
-LinkedIn: [Ivan J. Zapata-Rivera](https://www.linkedin.com/in/ivanzapatarivera/)
+* Email: [ivan.zapata-rivera@gmail.com](mailto:ivan.zapata-rivera@gmail.com)
+* LinkedIn: [Ivan J. Zapata-Rivera: linkedin.com/in/ivanzapatarivera/](https://www.linkedin.com/in/ivanzapatarivera/)
 
 
 ## Repository
 
-GitHub Title: [Python_Exercise_2](https://github.com/ivanzapatarivera/Python_Exercise_2)
+GitHub Title: [Python_Exercise_2: github.com/ivanzapatarivera/Python_Exercise_2](https://github.com/ivanzapatarivera/Python_Exercise_2)
 
 
 ## Screenshot
